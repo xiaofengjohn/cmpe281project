@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="CMPE281:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="CMPE281.war">
+      <element id="artifact" artifact-name="CMPE281:war exploded" />
+    </root>
+  </artifact>
+</component>
