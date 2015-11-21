@@ -8,11 +8,12 @@ public class Usage {
     public Usage(int count, int credit) {
         this.dataCount = count;
         this.credit = credit;
+        this.balance = credit - count;
     }
 
     int dataCount;
     int credit;
-
+    int balance;
     public int getDataCount() {
         return dataCount;
     }

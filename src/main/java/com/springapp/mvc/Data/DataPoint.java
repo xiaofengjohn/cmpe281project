@@ -5,24 +5,23 @@ package com.springapp.mvc.Data;
  */
 public class DataPoint {
     String name;
-    long timeStamp;
+    double timeStamp;
     double temperature;
     double bloodpressure;
     int heartrate;
+    public double getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(double timeStamp) {
+        this.timeStamp = timeStamp;
+    }
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public long getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(long timeStamp) {
-        this.timeStamp = timeStamp;
     }
 
     public double getTemperature() {
