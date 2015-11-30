@@ -23,5 +23,5 @@
 	<bean id="loginSuccessHandler" class="com.group1.cmpe281.spring.authentication.LoginSuccessHandler"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
-    <bean class="com.group1.cmpe281.spring.authentication.CustomAuthenticationProvider" name="customAuthenticationProvider"/>
+
 </beans>
