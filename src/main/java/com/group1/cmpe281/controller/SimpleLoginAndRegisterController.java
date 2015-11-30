@@ -18,6 +18,11 @@ public class SimpleLoginAndRegisterController {
 		return "register";
 	}
 
+	@RequestMapping(value="/")
+	public String rootView(){
+		return "redirect:/login.html";
+	}
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(@RequestParam String lastname,
 						@RequestParam String firstname,
