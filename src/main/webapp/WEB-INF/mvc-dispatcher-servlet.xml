@@ -8,14 +8,20 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:component-scan base-package="com.springapp.mvc"/>
-
+    <context:component-scan base-package="com.group1.cmpe281"/>
+    <context:annotation-config/>
     <mvc:annotation-driven/>
+    
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    
+    
+	<bean id="loginSuccessHandler" class="com.group1.cmpe281.spring.authentication.LoginSuccessHandler"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+    <bean class="com.group1.cmpe281.spring.authentication.CustomAuthenticationProvider" name="customAuthenticationProvider"/>
 </beans>
