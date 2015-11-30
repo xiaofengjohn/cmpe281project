@@ -9,6 +9,7 @@ import com.group1.cmpe281.dao.DataDAO;
 import com.group1.cmpe281.domain.AccountInfo;
 import com.group1.cmpe281.domain.DataPoint;
 import com.group1.cmpe281.domain.Usage;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -23,14 +24,14 @@ public class HelloController {
 
 	@RequestMapping(value = "/admin/deregister/{name}", method = RequestMethod.DELETE)
 	void adminDeregister(@PathVariable String name) {
-		accountInfoDAO.delete(name);
+		accountInfoDAO.deleteById(name);
 		dataDAO.deleteByName(name);
 	}
 
 	@RequestMapping(value = "/user/deregister", method = RequestMethod.DELETE)
 	void deregister(final HttpServletRequest request) {
 		String name = SecurityContextHolder.getContext().getAuthentication().getName();
-		accountInfoDAO.delete(name);
+		accountInfoDAO.deleteById(name);
 		dataDAO.deleteByName(name);
 	}
 
@@ -87,7 +88,7 @@ public class HelloController {
 	Usage userTopup(final HttpServletRequest request, @RequestParam int credit) {
 		String name = SecurityContextHolder.getContext().getAuthentication().getName();
 		AccountInfo accountInfo = accountInfoDAO.getAccountInfo(name);
-		accountInfoDAO.delete(accountInfo.getUsername());
+		accountInfoDAO.deleteById(accountInfo.getUsername());
 		accountInfo.setCredit(accountInfo.getCredit() + credit);
 		accountInfoDAO.insert(accountInfo);
 		return userGetUsage(request);

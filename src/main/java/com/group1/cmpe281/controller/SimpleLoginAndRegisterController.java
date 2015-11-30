@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.group1.cmpe281.dao.AccountInfoDAO;
 import com.group1.cmpe281.domain.AccountInfo;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SimpleLoginAndRegisterController {

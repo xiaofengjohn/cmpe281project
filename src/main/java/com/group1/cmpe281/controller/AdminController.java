@@ -3,9 +3,7 @@ package com.group1.cmpe281.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.group1.cmpe281.dao.AccountInfoDAO;
 import com.group1.cmpe281.domain.AccountInfo;
@@ -30,6 +28,19 @@ public class AdminController {
 	@ResponseBody
 	public List<AccountInfo> userList(){
 		return this.accountInfoDAO.findAll();
+	}
+
+	@RequestMapping(value = "/user/{id}/delete",method = RequestMethod.GET)
+	@ResponseBody
+	public List<AccountInfo> removeUser(@PathVariable("id")String id){
+		this.accountInfoDAO.deleteById(id);
+		return this.userList();
+	}
+
+	@ExceptionHandler(value = {Exception.class})
+	@ResponseBody
+	public String exceptionHandler(Exception exception){
+		return exception.getMessage();
 	}
 	
 }

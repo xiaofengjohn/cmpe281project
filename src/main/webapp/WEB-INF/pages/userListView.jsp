@@ -28,28 +28,24 @@
 			<tbody valign="top">
 				<tr class="row-even" ng-repeat="u in users">
 					<td>
-						<p>{{u.firstName}} . {{u.lastName}}</p>
+						<p>{{u.firstName}} {{u.lastName}}</p>
 					</td>
 					<td>
 						<p>{{u.email}}</p>
 					</td>
 					<td>
 						<p>
-							<a>{{u.phone}}</a>
+							{{u.phone}}
 						</p>
 					</td>
 					<td>
-						<p>
-							<a>{{u.address}}</a>
-						</p>
+						<p>{{u.address}}</p>
 					</td>
 					<td>
 						<p>
 						<div class="btn-group btn-group-xs" role="group"
 							aria-label="Operation">
-							<button type="button" class="btn btn-default">Turn On</button>
-							<button type="button" class="btn btn-default">Turn Off</button>
-							<button type="button" class="btn btn-default">Remove</button>
+							<button type="button" class="btn btn-default" ng-click="deleteUser(u)">remove</button>
 						</div>
 						</p>
 					</td>

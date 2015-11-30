@@ -1,9 +1,13 @@
 package com.group1.cmpe281.domain;
 
+import org.bson.types.ObjectId;
+
 /**
  * Created by WU on 17/11/2015.
  */
 public class AccountInfo {
+
+	private String id;
 	
 	private String lastName;
 	
@@ -28,6 +32,7 @@ public class AccountInfo {
 	public AccountInfo(String lastName, String firstName, String address, String email, String phone, String password,
 			String creditCard) {
 		super();
+		this.id = new ObjectId().toString();
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.address = address;
@@ -110,5 +115,12 @@ public class AccountInfo {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
+	}
 }

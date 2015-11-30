@@ -29,4 +29,22 @@ function($scope) {
 	}).error(function(data, status, headers, config) {
 	    console.log(data);
 	});
+
+	$scope.deleteUser = function(user){
+		if(user&&user.id){
+			var c = confirm("Do you want to delete User with username : " + user.username);
+			if(c){
+				$http.get('admin/user/' + user.id + '/delete').success(function(data, status, headers, config) {
+					if(angular.isString(data)){
+						alert(data);
+						return;
+					}
+					alert(angular.toJson(data));
+					$scope.users = data;
+				}).error(function(data, status, headers, config) {
+					console.log(data);
+				});
+			}
+		}
+	}
 })

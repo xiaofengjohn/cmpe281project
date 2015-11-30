@@ -94,11 +94,24 @@ public class AccountInfoDAO {
         return false;
     }
 
-    public boolean delete(String name) {
-        if(getAccountInfo(name) == null) return false;
-        Document document = new Document();
-        document.append("name", name);
-        mongoCollection.deleteMany(document);
-        return true;
+    public AccountInfo findById(String id){
+        if(id==null){
+            return null;
+        }
+        Document document = (Document) mongoCollection.find(new Document("id",id)).first();
+        AccountInfo accountInfo = null;
+        try {
+            accountInfo = jacksonObjectMapper.readValue(document.toJson(), AccountInfo.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return accountInfo;
+    }
+
+    public void deleteById(String id) {
+        Document document = (Document) mongoCollection.find(Filters.eq("id", id)).first();
+        if(document!=null){
+            mongoCollection.deleteMany(document);
+        }
     }
 }

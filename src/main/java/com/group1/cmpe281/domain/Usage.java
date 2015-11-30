@@ -1,9 +1,13 @@
 package com.group1.cmpe281.domain;
 
+import org.bson.types.ObjectId;
+
 /**
  * Created by WU on 17/11/2015.
  */
 public class Usage {
+    private String id = new ObjectId().toString();
+
     public Usage() {};
     public Usage(int count, int credit) {
         this.dataCount = count;
@@ -30,5 +34,11 @@ public class Usage {
         this.credit = credit;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }

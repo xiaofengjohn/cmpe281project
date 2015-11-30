@@ -1,9 +1,12 @@
 package com.group1.cmpe281.domain;
 
+import org.bson.types.ObjectId;
+
 /**
  * Created by WU on 17/11/2015.
  */
 public class DataPoint {
+    private String id = new ObjectId().toString();
     String name;
     double timeStamp;
     double temperature;
@@ -48,5 +51,11 @@ public class DataPoint {
         this.heartrate = heartrate;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }
