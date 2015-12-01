@@ -15,6 +15,10 @@ public class Sensor {
 
     private String sensorOwnerUsername;
 
+    // Just has to status ON and OFF
+    private String state = "ON";
+
+
     public Sensor() {
 
     }
@@ -31,5 +35,13 @@ public class Sensor {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

@@ -2,7 +2,10 @@ angular.module('adminApp', [ 'ngRoute' ])
 
 .config(function($routeProvider,$locationProvider) {
 	
-	$routeProvider.when('/admin/', {
+	$routeProvider.when('/upload/', {
+		controller : 'UploadController',
+		template : '<div></div>'
+	}).when('/admin/', {
 		controller : 'HomeContentController',
 		template : '<div></div>'
 	}).when('/userListView/', {
@@ -21,6 +24,10 @@ function($scope) {
 
 .controller('HomeContentController', function($scope) {
 	
+})
+
+.controller('UploadController', function($scope,$http) {
+    alert("ksdfkhsd");
 })
 
 .controller('UserListContentController', function($scope,$http) {
@@ -48,3 +55,4 @@ function($scope) {
 		}
 	}
 })
+

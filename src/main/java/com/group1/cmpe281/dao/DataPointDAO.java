@@ -11,6 +11,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -100,5 +101,27 @@ public class DataPointDAO {
         }
         return data;
     }
+
+    public List<DataPoint> findAbnormalByName(String name) {
+        List<DataPoint> result = new ArrayList<DataPoint>();
+        Bson abnormalTemp = Filters.gt("temperature", 37);
+        Bson abnormalHeart = Filters.or(Filters.lt("heartrate", 60), Filters.gt("heartrate", 100));
+        Bson abnormalBlood = Filters.or(Filters.lt("bloodpressure", 80), Filters.gt("bloodpressure", 120));
+        Bson abnormal = Filters.or(abnormalBlood, abnormalHeart, abnormalTemp);
+        FindIterable<Document> documents = mongoCollection.find(Filters.and(Filters.eq("name", name), abnormal))
+                .sort(new Document().append("timeStamp", 1));
+        for(Document document : documents) {
+            String jsonString = document.toJson();
+            DataPoint dataPoint = null;
+            try {
+                dataPoint = jacksonObjectMapper.readValue(jsonString, DataPoint.class);
+                result.add(dataPoint);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+
 
 }
