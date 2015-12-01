@@ -1,5 +1,7 @@
 package com.group1.cmpe281.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.group1.cmpe281.dao.DataPointDAO;
 import com.group1.cmpe281.dao.SensorDAO;
 import com.group1.cmpe281.domain.DataPoint;
@@ -22,13 +24,21 @@ public class SensorContorller {
     @RequestMapping(value = "/uploaddata", method = RequestMethod.POST)
     @ResponseBody
     public void upload(@RequestBody DataPoint dataPoint) {
-        dataPointDAO.add(dataPoint);
+        try {
+            System.out.println(new ObjectMapper().writeValueAsString(dataPoint));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+//        dataPointDAO.add(dataPoint);
     }
 
 
     @RequestMapping(value = "/status/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public String status(@RequestParam("id")String id) {
+    public String status(@PathVariable("id")String id) {
+        if (true) {
+            return "ON";
+        }
         Sensor sensor = this.sensorDAO.findById(id);
         if(sensor!=null){
             return sensor.getState();
