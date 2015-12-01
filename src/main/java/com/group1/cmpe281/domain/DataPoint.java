@@ -100,6 +100,4 @@ public class DataPoint {
     public void setSensorOwnerId(String sensorOwnerId) {
         this.sensorOwnerId = sensorOwnerId;
     }
-
-
 }

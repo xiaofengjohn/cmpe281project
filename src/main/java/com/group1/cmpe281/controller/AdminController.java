@@ -2,6 +2,10 @@ package com.group1.cmpe281.controller;
 
 import java.util.List;
 
+import com.group1.cmpe281.dao.DataPointDAO;
+import com.group1.cmpe281.dao.SensorDAO;
+import com.group1.cmpe281.domain.DataPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,8 +15,12 @@ import com.group1.cmpe281.domain.AccountInfo;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-	
-	AccountInfoDAO accountInfoDAO = new AccountInfoDAO();
+
+	@Autowired
+	private AccountInfoDAO accountInfoDAO;
+
+	@Autowired
+	private DataPointDAO dataPointDAO;
 
 	@RequestMapping("/")
 	public String homeView(){
@@ -35,6 +43,22 @@ public class AdminController {
 	public List<AccountInfo> removeUser(@PathVariable("id")String id){
 		this.accountInfoDAO.deleteById(id);
 		return this.userList();
+	}
+
+	@RequestMapping("/sensorListView")
+	public String sensorListView(){
+		return "sensorListView";
+	}
+
+	@RequestMapping("/sensorDataListView")
+	public String sensorDataListView(){
+		return "sensorDataListView";
+	}
+
+	@RequestMapping(value = "/sensor/{id}/data",method = RequestMethod.GET)
+	@ResponseBody
+	public List<DataPoint> getDataBySensorId(@PathVariable("id")String id){
+		return this.dataPointDAO.findAllBySensorId(id);
 	}
 
 	@ExceptionHandler(value = {Exception.class})

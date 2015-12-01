@@ -5,10 +5,10 @@
 	String basePath = request.getScheme()+"://"+request.getServerName() +":"+request.getServerPort()+path+"/"; 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"  ng-app="userApp">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  		<base href=" <%=basePath%>"/> 
+  		<base href=" <%=basePath%>"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   		<link href="resources/css" rel="stylesheet" type="text/css"/>
   		<title>User Management Home. Mobile Health Sensor, Group #1</title>
@@ -29,7 +29,7 @@
 		     HAS_SOURCE:  false,
 		    };
 		</script>
-  
+
 	    <script type="text/javascript" src="resources/jquery.js"></script>
 	    <script type="text/javascript" src="resources/underscore.js"></script>
 	    <script type="text/javascript" src="resources/doctools.js"></script>
@@ -39,9 +39,10 @@
 	    <script type="text/javascript" src="resources/navbar.js"></script>
 	    <script type="text/javascript" src="resources/angular.js"></script>
 	    <script type="text/javascript" src="resources/angular-route.js"></script>
+		<script type="text/javascript" src="resources/userApp.js"></script>
 
 	</head>
-	<body>
+	<body ng-controller="MainContorller">
 		<header id="header-db" class="row" role="navigation">
 			<div class="header-content">
 				<a class="icon-menu expand-toc-icon pull-left"></a>
@@ -55,7 +56,7 @@
 				</div>
 			</div>
 		</header>
-	
+
 		<aside class="sidebar">
 			<div class="sphinxsidebar">
 				<div class="sphinxsidebarwrapper" style="">
@@ -63,17 +64,17 @@
 						<li class="toctree-l1"><a class="reference internal" href="file:///Users/xiaofengli/Documents/CMPE_281/project_ui_temp/installation/">Sensor List</a>
 							<ul style="display: block;">
 								<li class="toctree-l2 selected-item">
-									<a class="reference internal" href="SenorDashboard.html"><span class="expand-icon"></span>Current Sensor List</a>
+									<a class="reference internal" href="user/#/sensorListView"><span class="expand-icon"></span>Current Sensor List</a>
 								</li>
 								<li class="toctree-l2">
-									<a class="reference internal" href="AddSensor.html"><span class="expand-icon"></span>Add New Sensor</a>
+									<a class="reference internal" href="user/#/addSensorView"><span class="expand-icon"></span>Add New Sensor</a>
 								</li>
 								<li class="toctree-l2">
 									<a class="reference internal" href="SearchSensor.html"><span class="expand-icon"></span>Search Sensor</a>
 								</li>
 							</ul>
 						</li>
-						
+
 						<li class="toctree-l1"><a class="reference internal" href="file:///Users/xiaofengli/Documents/CMPE_281/project_ui_temp/installation/">Billing</a>
 							<ul style="display: none;">
 								<li class="toctree-l2">
@@ -87,7 +88,7 @@
 								</li>
 							</ul>
 						</li>
-						
+
 						<li class="toctree-l1"><a class="reference internal" href="file:///Users/xiaofengli/Documents/CMPE_281/project_ui_temp/installation/">Account Management</a>
 							<ul style="display: block;">
 								<li class="toctree-l2">
@@ -101,22 +102,24 @@
 								</li>
 							</ul>
 						</li>
-		
+
 					</ul>
-		
-		
-		
+
+
+
 				</div>
 			</div>
-		
+
 			</aside>
-	
+
 		<div class="content">
 			<div class="main-column pull-left">
 				<div class="document">
 					<div class="documentwrapper">
 						<div class="bodywrapper">
 							<div class="body">
+
+								<div ng-view></div>
 
 								<div class="footer">
 									<div class="copyright">

@@ -11,14 +11,17 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by xiaofengli on 11/30/15.
  */
+@Component
 public class SensorDAO {
 
     private static MongoCollection mongoCollection = null;
@@ -84,6 +87,7 @@ public class SensorDAO {
                 e.printStackTrace();
             }
         }
+        Collections.reverse(list);
         return list;
     }
 
