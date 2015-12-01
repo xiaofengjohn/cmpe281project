@@ -61,7 +61,7 @@
 			<div class="sphinxsidebar">
 				<div class="sphinxsidebarwrapper" style="">
 					<ul>
-						<li class="toctree-l1"><a class="reference internal" href="file:///Users/xiaofengli/Documents/CMPE_281/project_ui_temp/installation/">Sensor List</a>
+						<li class="toctree-l1"><a class="reference internal">Sensor List</a>
 							<ul style="display: block;">
 								<li class="toctree-l2 selected-item">
 									<a class="reference internal" href="user/#/sensorListView"><span class="expand-icon"></span>Current Sensor List</a>
@@ -69,13 +69,10 @@
 								<li class="toctree-l2">
 									<a class="reference internal" href="user/#/addSensorView"><span class="expand-icon"></span>Add New Sensor</a>
 								</li>
-								<li class="toctree-l2">
-									<a class="reference internal" href="SearchSensor.html"><span class="expand-icon"></span>Search Sensor</a>
-								</li>
 							</ul>
 						</li>
 
-						<li class="toctree-l1"><a class="reference internal" href="file:///Users/xiaofengli/Documents/CMPE_281/project_ui_temp/installation/">Billing</a>
+						<li class="toctree-l1"><a class="reference internal">Billing</a>
 							<ul style="display: none;">
 								<li class="toctree-l2">
 									<a class="reference internal"><span class="expand-icon"></span>View Billing</a>
@@ -89,16 +86,10 @@
 							</ul>
 						</li>
 
-						<li class="toctree-l1"><a class="reference internal" href="file:///Users/xiaofengli/Documents/CMPE_281/project_ui_temp/installation/">Account Management</a>
+						<li class="toctree-l1"><a class="reference internal">Account Management</a>
 							<ul style="display: block;">
 								<li class="toctree-l2">
-									<a class="reference internal"><span class="expand-icon"></span>Account Info</a>
-								</li>
-								<li class="toctree-l2">
-									<a class="reference internal"><span class="expand-icon"></span>Change Password</a>
-								</li>
-								<li class="toctree-l2">
-									<a class="reference internal"><span class="expand-icon"></span>Logout</a>
+									<a class="reference internal" href="logout.html"><span class="expand-icon"></span>Logout</a>
 								</li>
 							</ul>
 						</li>

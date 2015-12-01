@@ -64,41 +64,15 @@
 						<li class="toctree-l1"><a class="reference internal">Sensor List</a>
 							<ul style="display: block;">
 								<li class="toctree-l2 selected-item">
-									<a class="reference internal" href="SenorDashboard.html"><span class="expand-icon"></span>Current Sensor List</a>
-								</li>
-								<li class="toctree-l2">
-									<a class="reference internal" href="AddSensor.html"><span class="expand-icon"></span>Add New Sensor</a>
-								</li>
-								<li class="toctree-l2">
-									<a class="reference internal" href="SearchSensor.html"><span class="expand-icon"></span>Search Sensor</a>
+									<a class="reference internal"><span class="expand-icon"></span>Current Sensor List</a>
 								</li>
 							</ul>
 						</li>
-						
-						<li class="toctree-l1"><a class="reference internal">Billing</a>
-							<ul style="display: none;">
-								<li class="toctree-l2">
-									<a class="reference internal"><span class="expand-icon"></span>View Billing</a>
-								</li>
-								<li class="toctree-l2">
-									<a class="reference internal"><span class="expand-icon"></span>Billing Info</a>
-								</li>
-								<li class="toctree-l2">
-									<a class="reference internal"><span class="expand-icon"></span>Billing History</a>
-								</li>
-							</ul>
-						</li>
-						
-						<li class="toctree-l1"><a class="reference internal">User Account Management</a>
+
+						<li class="toctree-l1"><a class="reference internal">User Management</a>
 							<ul style="display: block;">
 								<li class="toctree-l2">
 									<a class="reference internal" href="admin/#/userListView/"><span class="expand-icon"></span>User Account List</a>
-								</li>
-								<li class="toctree-l2">
-									<a class="reference internal"><span class="expand-icon"></span>Change Password</a>
-								</li>
-								<li class="toctree-l2">
-									<a class="reference internal"><span class="expand-icon"></span>Logout</a>
 								</li>
 							</ul>
 						</li>

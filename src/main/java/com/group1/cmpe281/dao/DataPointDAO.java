@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -71,6 +72,7 @@ public class DataPointDAO {
                 e.printStackTrace();
             }
         }
+        Collections.reverse(list);
         return list;
     }
 
@@ -87,6 +89,7 @@ public class DataPointDAO {
                 e.printStackTrace();
             }
         }
+        Collections.reverse(list);
         return list;
     }
 
@@ -122,6 +125,7 @@ public class DataPointDAO {
                 e.printStackTrace();
             }
         }
+        Collections.reverse(result);
         return result;
     }
 

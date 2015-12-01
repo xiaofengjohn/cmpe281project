@@ -1,6 +1,7 @@
 package com.group1.cmpe281.domain;
 
 import org.bson.types.ObjectId;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * Created by WU on 17/11/2015.
@@ -11,7 +12,8 @@ public class DataPoint {
 
     private String name;
 
-    private double timeStamp;
+    @JsonProperty("$numberLong")
+    private long timeStamp;
 
     private double temperature;
 
@@ -27,7 +29,7 @@ public class DataPoint {
 
     }
 
-    public DataPoint(String name, double timeStamp, double temperature, double bloodpressure, int heartrate, String sensorId, String sensorOwnerId) {
+    public DataPoint(String name, long timeStamp, double temperature, double bloodpressure, int heartrate, String sensorId, String sensorOwnerId) {
         this.name = name;
         this.timeStamp = timeStamp;
         this.temperature = temperature;
@@ -53,11 +55,11 @@ public class DataPoint {
         this.name = name;
     }
 
-    public double getTimeStamp() {
+    public long getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(double timeStamp) {
+    public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
     }
 

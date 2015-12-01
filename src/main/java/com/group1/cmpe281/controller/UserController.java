@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -77,6 +78,15 @@ public class UserController {
 	@ResponseBody
 	public List<DataPoint> getDataBySensorId(@PathVariable("id")String id){
 		return this.dataPointDAO.findAllBySensorId(id);
+	}
+
+	@RequestMapping(value = "/sensor/{id}",method = RequestMethod.GET)
+	@ResponseBody
+	public List<Sensor> searchSensor(@PathVariable("id")String id){
+		Sensor sensor = this.sensorDAO.findById(id);
+		List<Sensor> list = new ArrayList<Sensor>();
+		list.add(sensor);
+		return list;
 	}
 
 	@RequestMapping(value = "/sensor/{id}/delete",method = RequestMethod.GET)

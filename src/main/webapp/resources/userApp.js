@@ -11,6 +11,9 @@ angular.module('userApp', [ 'ngRoute' ])
 	}).when('/sensorListView/', {
 		controller : 'SensorListViewController',
 		templateUrl : "user/sensorListView"
+	}).when('/sensorDataListView/:sensorId', {
+		controller : 'SensorDataListViewController',
+		templateUrl : "user/sensorDataListView"
 	}).otherwise({
 		redirectTo : '/user/'
 	});
@@ -33,7 +36,7 @@ angular.module('userApp', [ 'ngRoute' ])
 
 })
 
-.controller('SensorListViewController', function($scope,$http) {
+.controller('SensorListViewController', function($scope,$http,$location) {
 
 	$http.get('user/sensor').success(function(data, status, headers, config) {
 		$scope.sensors = data;
@@ -54,6 +57,29 @@ angular.module('userApp', [ 'ngRoute' ])
 			});
 		}
 	}
+
+	$scope.viewData = function(sensor){
+		if(!sensor){
+			return;
+		}
+		$location.path('/sensorDataListView/' + sensor.id);
+	}
+
+	$scope.stopSensor = function(sensor){
+		alert(sensor.id);
+	}
+
+})
+
+.controller('SensorDataListViewController', function($scope,$routeParams,$http) {
+
+	$scope.params = $routeParams;
+
+	$http.get('user/sensor/' + $scope.params.sensorId + '/data').success(function(data, status, headers, config) {
+		$scope.sensorData = data;
+	}).error(function(data, status, headers, config) {
+		console.log(data);
+	});
 
 })
 
