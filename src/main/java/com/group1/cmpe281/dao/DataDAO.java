@@ -12,6 +12,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.List;
 /**
  * Created by WU on 17/11/2015.
  */
+@Component
 public class DataDAO {
     static MongoCollection mongoCollection = null;
     static ObjectMapper jacksonObjectMapper;

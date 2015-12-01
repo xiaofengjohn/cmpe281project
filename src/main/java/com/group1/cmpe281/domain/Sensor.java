@@ -15,7 +15,7 @@ public class Sensor {
 
     private String sensorOwnerUsername;
 
-    // Just has to status ON and OFF
+    // Just has two status ON and OFF
     private String state = "ON";
 
 
@@ -35,6 +35,30 @@ public class Sensor {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getSensorOwnerId() {
+        return sensorOwnerId;
+    }
+
+    public void setSensorOwnerId(String sensorOwnerId) {
+        this.sensorOwnerId = sensorOwnerId;
+    }
+
+    public String getSensorName() {
+        return sensorName;
+    }
+
+    public void setSensorName(String sensorName) {
+        this.sensorName = sensorName;
+    }
+
+    public String getSensorOwnerUsername() {
+        return sensorOwnerUsername;
+    }
+
+    public void setSensorOwnerUsername(String sensorOwnerUsername) {
+        this.sensorOwnerUsername = sensorOwnerUsername;
     }
 
     public String getState() {

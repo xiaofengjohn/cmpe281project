@@ -12,14 +12,17 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by xiaofengli on 11/30/15.
  */
+@Component
 public class DataPointDAO {
 
     static MongoCollection mongoCollection = null;
@@ -69,6 +72,7 @@ public class DataPointDAO {
                 e.printStackTrace();
             }
         }
+        Collections.reverse(list);
         return list;
     }
 
@@ -85,6 +89,7 @@ public class DataPointDAO {
                 e.printStackTrace();
             }
         }
+        Collections.reverse(list);
         return list;
     }
 
@@ -102,13 +107,13 @@ public class DataPointDAO {
         return data;
     }
 
-    public List<DataPoint> findAbnormalByName(String name) {
+    public List<DataPoint> findAbnormalBySensorId(String sensorId) {
         List<DataPoint> result = new ArrayList<DataPoint>();
         Bson abnormalTemp = Filters.gt("temperature", 37);
         Bson abnormalHeart = Filters.or(Filters.lt("heartrate", 60), Filters.gt("heartrate", 100));
         Bson abnormalBlood = Filters.or(Filters.lt("bloodpressure", 80), Filters.gt("bloodpressure", 120));
         Bson abnormal = Filters.or(abnormalBlood, abnormalHeart, abnormalTemp);
-        FindIterable<Document> documents = mongoCollection.find(Filters.and(Filters.eq("name", name), abnormal))
+        FindIterable<Document> documents = mongoCollection.find(Filters.and(Filters.eq("sensorId", sensorId), abnormal))
                 .sort(new Document().append("timeStamp", 1));
         for(Document document : documents) {
             String jsonString = document.toJson();
@@ -120,8 +125,18 @@ public class DataPointDAO {
                 e.printStackTrace();
             }
         }
+        Collections.reverse(result);
         return result;
     }
 
+    public int getDatasize() {
+        return (int) mongoCollection.count();
+    }
+
+    public int getDatasizeBySensorOwnerId(String id) {
+        Document document = new Document();
+        document.append("sensorOwnerId", id);
+        return (int) mongoCollection.count(document);
+    }
 
 }

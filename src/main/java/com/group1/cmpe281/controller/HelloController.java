@@ -1,5 +1,6 @@
 package com.group1.cmpe281.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,12 @@ import java.util.Map;
 
 
 public class HelloController {
-	AccountInfoDAO accountInfoDAO = new AccountInfoDAO();
-	DataDAO dataDAO = new DataDAO();
+
+	@Autowired
+	AccountInfoDAO accountInfoDAO;
+
+	@Autowired
+	DataDAO dataDAO;
 
 
 	@RequestMapping(value = "/admin/deregister/{name}", method = RequestMethod.DELETE)
