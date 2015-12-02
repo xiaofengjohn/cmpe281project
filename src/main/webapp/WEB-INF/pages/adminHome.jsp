@@ -19,6 +19,7 @@
        	<link rel="stylesheet" href="resources/tipsy.css" type="text/css"/>
    		<link rel="stylesheet" href="resources/docs.css" type="text/css"/>
    		<link rel="stylesheet" href="resources/pygments.css" type="text/css"/>
+   		<link rel="stylesheet" href="resources/angular-chart.css" type="text/css"/>
 
 		<script type="text/javascript">
 		    var DOCUMENTATION_OPTIONS = {
@@ -37,8 +38,10 @@
 	    <script type="text/javascript" src="resources/jquery.tipsy.js"></script>
 	    <script type="text/javascript" src="resources/jquery.cookie.js"></script>
 	    <script type="text/javascript" src="resources/navbar.js"></script>
+	   	<script type="text/javascript" src="resources/Chart.js"></script>
 	    <script type="text/javascript" src="resources/angular.js"></script>
 	    <script type="text/javascript" src="resources/angular-route.js"></script>
+	    <script type="text/javascript" src="resources/angular-chart.js"></script>
 	    <script type="text/javascript" src="resources/adminApp.js"></script>
 
 	</head>
@@ -64,7 +67,7 @@
 						<li class="toctree-l1"><a class="reference internal">Sensor List</a>
 							<ul style="display: block;">
 								<li class="toctree-l2 selected-item">
-									<a class="reference internal"><span class="expand-icon"></span>Current Sensor List</a>
+									<a class="reference internal" href="admin/#/sensorListView/"><span class="expand-icon"></span>Current Sensor List</a>
 								</li>
 							</ul>
 						</li>

@@ -133,10 +133,10 @@ public class DataPointDAO {
         return (int) mongoCollection.count();
     }
 
-    public int getDatasizeBySensorOwnerId(String id) {
+    public int getDatasizeBySensorOwnerId(String sensorOwnerId) {
         Document document = new Document();
-        document.append("sensorOwnerId", id);
+        document.append("sensorOwnerId", sensorOwnerId);
         return (int) mongoCollection.count(document);
     }
-
+    
 }

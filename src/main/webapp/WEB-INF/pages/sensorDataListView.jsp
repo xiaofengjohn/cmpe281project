@@ -6,6 +6,15 @@
 			+ path + "/";
 %>
 <div class="section">
+
+	<!-- chart -->
+	<h5>Open Chart</h5><input type="checkbox" ng-model="chart.open">
+	<canvas id="bar" class="chart chart-line" chart-data="chart.data"
+  			chart-labels="chart.labels" chart-legend="true" chart-series="chart.series" ng-show="chart.open">
+	</canvas>
+	<br>
+	<!-- chart end -->
+	
 	<h1>Sensor Data List</h1>
 	<div class="section" id="getting-started">
 		<table border="1" class="index-table docutils">

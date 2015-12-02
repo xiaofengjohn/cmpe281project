@@ -73,6 +73,30 @@ public class SensorDAO {
         }
         return list;
     }
+    
+    public Sensor stop(Sensor sensor){
+    	if(sensor!=null){
+    		sensor.setState("OFF");
+    		this.mongoCollection.updateOne(new Document("id", sensor.getId()),
+    		        new Document("$set", new Document("state", "OFF")));
+    		return sensor;
+    	}
+    	return null;
+    }
+    
+    public void stopById(String id){
+    	if(id!=null){
+    		this.mongoCollection.updateOne(new Document("id", id),
+    		        new Document("$set", new Document("state", "OFF")));
+    	}
+    }
+    
+    public void startById(String id){
+    	if(id!=null){
+    		this.mongoCollection.updateOne(new Document("id", id),
+    		        new Document("$set", new Document("state", "ON")));
+    	}
+    }
 
     public List<Sensor> findAllByOwnerId(String ownerId){
         List<Sensor> list = new ArrayList<Sensor>();

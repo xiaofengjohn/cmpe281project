@@ -6,6 +6,8 @@ import com.group1.cmpe281.dao.SensorDAO;
 import com.group1.cmpe281.domain.AccountInfo;
 import com.group1.cmpe281.domain.DataPoint;
 import com.group1.cmpe281.domain.Sensor;
+import com.group1.cmpe281.domain.Usage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -89,11 +91,56 @@ public class UserController {
 		return list;
 	}
 
+	@RequestMapping(value = "/sensor/{id}/stop",method = RequestMethod.GET)
+	@ResponseBody
+	public List<Sensor> StopSensor(@PathVariable("id")String id){
+		this.sensorDAO.stopById(id);
+		return this.sensorList();
+	}
+	
+	@RequestMapping(value = "/sensor/{id}/start",method = RequestMethod.GET)
+	@ResponseBody
+	public List<Sensor> startSensor(@PathVariable("id")String id){
+		this.sensorDAO.startById(id);
+		return this.sensorList();
+	}
+	
 	@RequestMapping(value = "/sensor/{id}/delete",method = RequestMethod.GET)
 	@ResponseBody
 	public List<Sensor> removeSensor(@PathVariable("id")String id){
 		this.sensorDAO.deleteById(id);
 		return this.sensorList();
+	}
+	
+	@RequestMapping("/usageView")
+	public String usageView(){
+		return "usageView";
+	}
+	
+	@RequestMapping(value = "/usage",method = RequestMethod.GET)
+	@ResponseBody
+	public Usage getUsage(){
+		String name = SecurityContextHolder.getContext().getAuthentication().getName();
+		AccountInfo accountInfo = accountInfoDAO.getAccountInfo(name);
+		if(accountInfo==null){
+			throw new RuntimeException("Cannot find use info with name : " + name);
+		}
+		int credit = accountInfo.getCredit();
+		int used = dataPointDAO.getDatasizeBySensorOwnerId(accountInfo.getId());
+		return new Usage(used, credit);
+	}
+	
+	@RequestMapping(value = "/credit/{credit}",method = RequestMethod.GET)
+	@ResponseBody
+	public Usage credit(@PathVariable("credit")int credit){
+		String name = SecurityContextHolder.getContext().getAuthentication().getName();
+		AccountInfo accountInfo = accountInfoDAO.getAccountInfo(name);
+		if(accountInfo==null){
+			throw new RuntimeException("Cannot find use info with name : " + name);
+		}
+		this.accountInfoDAO.addCreditById(accountInfo.getId(), credit);
+		int used = dataPointDAO.getDatasizeBySensorOwnerId(accountInfo.getId());
+		return new Usage(used, accountInfo.getCredit() + credit);
 	}
 
 }

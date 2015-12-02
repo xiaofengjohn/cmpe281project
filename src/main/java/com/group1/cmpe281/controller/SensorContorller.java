@@ -24,26 +24,23 @@ public class SensorContorller {
 
     @RequestMapping(value = "/uploaddata", method = RequestMethod.POST)
     @ResponseBody
-    public void upload(@RequestBody DataPoint dataPoint) {
+    public Object upload(@RequestBody DataPoint dataPoint) {
+    	String sensorId = dataPoint.getSensorId();
+    	Sensor sensor = this.sensorDAO.findById(sensorId);
+    	dataPoint.setSensorOwnerId(sensor.getSensorOwnerId());
         dataPointDAO.add(dataPoint);
+        return new String[]{"SUCCESS"};
     }
 
 
     @RequestMapping(value = "/status/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public String status(@RequestParam("id")String id) {
+    public Object status(@PathVariable("id")String id) {
         Sensor sensor = this.sensorDAO.findById(id);
         if(sensor!=null){
-            return sensor.getState();
+            return new String[]{sensor.getState()};
         }
-        return "";
-    }
-
-
-    @ExceptionHandler(value = {Exception.class})
-    @ResponseBody
-    public String exceptionHandler(Exception exception){
-        return exception.getMessage();
+        return new String[]{"OFF"};
     }
 
 }

@@ -116,4 +116,14 @@ public class AccountInfoDAO {
             mongoCollection.deleteMany(document);
         }
     }
+    
+    public void addCreditById(String id,int credit){
+    	AccountInfo accountInfo = this.findById(id);
+    	int currentCredit = accountInfo.getCredit() + credit;
+    	if(id!=null){
+    		this.mongoCollection.updateOne(new Document("id", id),
+    		        new Document("$set", new Document("credit", currentCredit)));
+    	}
+    }
+    
 }
