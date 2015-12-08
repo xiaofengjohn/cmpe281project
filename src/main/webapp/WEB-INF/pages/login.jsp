@@ -99,7 +99,9 @@
 									<div class="copyright">
 										<p>© Group #1, Health Mobile Sensor, 2015.</p>
 									</div>
-									<div>Server Info:<%out.println(basePath);%></div>
+									<div>Server Info:<%out.println(basePath);
+										out.println(request.getLocalAddr() + " : " + request.getLocalPort()+"<br>");
+									%></div>
 								</div>
 							</div>
 						</div>
