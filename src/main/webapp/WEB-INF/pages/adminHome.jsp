@@ -47,6 +47,9 @@
 	</head>
 	<body ng-controller="MainContorller">
 		<header id="header-db" class="row" role="navigation">
+			<div>
+				Server Info:<%out.println(basePath);%>
+			</div>
 			<div class="header-content">
 				<a class="icon-menu expand-toc-icon pull-left"></a>
 				<div class="logo pull-left">

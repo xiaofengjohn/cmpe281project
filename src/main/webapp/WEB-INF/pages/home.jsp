@@ -120,5 +120,9 @@
 				</div>
 			</div>
 		</div>
-	
-</body></html>
+
+		<div>
+			Server Info:<%out.println(basePath);%>
+		</div>
+	</body>
+</html>
