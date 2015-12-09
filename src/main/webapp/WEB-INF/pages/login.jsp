@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <% 
 	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName() +":"+request.getServerPort()+path+"/"; 
+	String basePath = request.getScheme()+"://"+request.getServerName() +":"+request.getServerPort()+path+"/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -42,16 +42,18 @@
 
 	</head>
 	<body>
+
 		<header id="header-db" class="row" role="navigation">
 			<div class="header-content">
 				<a class="icon-menu expand-toc-icon pull-left"></a>
 				<div class="logo pull-left">
 					<h1>Health Sensor</h1>
 				</div>
-				
+
 			</div>
 		</header>
-	
+
+
 		
 	
 		<div class="content">
@@ -97,6 +99,9 @@
 									<div class="copyright">
 										<p>© Group #1, Health Mobile Sensor, 2015.</p>
 									</div>
+									<div>Server Info:<%out.println(basePath);
+										out.println(request.getLocalAddr() + " : " + request.getLocalPort()+"<br>");
+									%></div>
 								</div>
 							</div>
 						</div>
@@ -104,5 +109,6 @@
 				</div>
 			</div>
 		</div>
-	
-</body></html>
+
+	</body>
+</html>
