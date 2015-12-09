@@ -64,7 +64,7 @@
 			<div class="sphinxsidebar">
 				<div class="sphinxsidebarwrapper" style="">
 					<ul>
-						<li class="toctree-l1"><a class="reference internal">Sensor List</a>
+						<li class="toctree-l1"><a class="reference internal">Sensor DashBoard</a>
 							<ul style="display: block;">
 								<li class="toctree-l2 selected-item">
 									<a class="reference internal" href="user/#/sensorListView"><span class="expand-icon"></span>Current Sensor List</a>

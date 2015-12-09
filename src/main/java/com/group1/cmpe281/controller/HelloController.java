@@ -129,7 +129,7 @@ public class HelloController {
 		if (accountInfo != null)
 			model.addAttribute("message", accountInfo.getUsername() + accountInfo.getPassword());
 		else
-			model.addAttribute("message", "cannot find");
+			model.addAttribute("message", "cannot find"); 
 		return "hello";
 	}
 
